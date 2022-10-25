@@ -1,0 +1,10 @@
+.nav-item a{
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    transition: .3s;
+    padding: 3px 0;
+}
+.nav-item a:hover{
+    color: #00A0C8;
+}
