@@ -25,7 +25,7 @@ const Login = () => {
 
     return (
         <div className='py-16'>
-            <div className="form-control w-full max-w-[400px] mx-auto bg-gray-900 p-5 rounded-xl">
+            <div className="form-control w-full max-w-[400px] mx-auto bg-gray-900 p-5 rounded-xl shadow-xl">
                 <label className="label">
                     <span className="label-text text-xl">Your Email:</span>
                 </label>
@@ -38,10 +38,10 @@ const Login = () => {
                     <button className=" text-black py-1 w-full text-xl font-bold rounded-lg bg-[#FAB400] duration-300  hover:bg-[#c99204] flex justify-center items-center">Login <BiLogInCircle className=' ml-1'></BiLogInCircle></button>
                 </div>
                 <div className='mt-7 '>
-                    <button onClick = {handleGoogleSignIn} className=" text-[#9c6bf2] py-1 w-full text-lg font-semibold rounded-lg bg-black hover:bg-[#111111] duration-300 flex justify-center items-center"><FcGoogle className='text-2xl'></FcGoogle> <span className='ml-2'>Continue with Google</span></button>
+                    <button onClick = {handleGoogleSignIn} className=" text-[#9c6bf2] py-1 w-full text-lg font-semibold rounded-lg bg-[#111111] hover:bg-black  duration-300 flex justify-center items-center"><FcGoogle className='text-2xl'></FcGoogle> <span className='ml-2'>Continue with Google</span></button>
                 </div>
                 <div className='mt-2 '>
-                    <button className=" text-[#9c6bf2] py-1 w-full text-lg font-semibold rounded-lg bg-black hover:bg-[#111111] duration-300  flex justify-center items-center"><GrGithub className='text-2xl'></GrGithub> <span className='ml-2'>Continue with Github</span></button>
+                    <button className=" text-[#9c6bf2] py-1 w-full text-lg font-semibold rounded-lg bg-[#111111] hover:bg-black duration-300  flex justify-center items-center"><GrGithub className='text-2xl'></GrGithub> <span className='ml-2'>Continue with Github</span></button>
                 </div>
             </div>
         </div>

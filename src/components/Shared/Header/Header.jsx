@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineDarkMode } from "react-icons/md";
 import cslogo from "../../../assets/cslogo.png"
-
 import './Header.css'
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const {user, logOut} =  useContext(AuthContext);
+
+  const handleSignOut = () => {
+    logOut()
+    .then( () => {})
+    .catch(error => console.error(error))
+  }
+
   return (
     <div className="sticky top-0 z-10">
       <div className="header bg-gray-900 py-2 w-[100%]">
@@ -22,12 +30,25 @@ const Header = () => {
                     </div>
             </div>
             </Link>
-            <nav className="nav-item md:flex hidden">
+            <nav className="nav-item md:flex items-center hidden">
                 <NavLink to='/courses'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Courses</NavLink>
                 <NavLink to='/faq'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>FAQ</NavLink>
                 <NavLink to="/blog" className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Blog</NavLink>
-                <NavLink to="/" className={({isActive}) => isActive ? '  text-[#9c6bf2]' : undefined }><MdOutlineDarkMode className="text-[26px] mt-1 mb-0 pb-0" ></MdOutlineDarkMode></NavLink>
-                <NavLink to="/login" className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Login</NavLink>
+                <NavLink to="/" className={({isActive}) => isActive ? '  text-[#9c6bf2]' : undefined }><MdOutlineDarkMode className="text-[26px] " ></MdOutlineDarkMode></NavLink>
+
+                <div  >
+                {
+                    user?.uid ? 
+                    <div className="flex items-center">
+                        <Link to='/user'><img className="w-[35px] h-[35px] rounded-full mr-4" src={user?.photoURL} alt="User" /></Link>
+                        <button onClick={handleSignOut}  className=' bg-[#FAB400] duration-300 hover:bg-[#c99204] rounded text-black  text-[14px] font-semibold py-1 px-2 ' >Log Out</button>
+                    </div>
+                    :
+                    <Link to="/login">
+                        <button className="bg-[#9c6bf2] duration-300 hover:bg-[#c3a6f7] rounded text-black text-[15px] font-semibold py-1 px-3 " to='/login'>Login</button>
+                    </Link>
+                }
+                </div>
             </nav>
 
             <div className='lg:hidden md:hidden bg-[#121212'>

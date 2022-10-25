@@ -5,6 +5,7 @@ import Courses from '../../components/Pages/Courses/Courses';
 import Faq from '../../components/Pages/Faq/Faq';
 import Home from '../../components/Pages/Home/Home';
 import Login from '../../components/Pages/Login/Login';
+import User from '../../components/Pages/User/User';
 import Main from '../../Layouts/Main';
 
 export const Routes = createBrowserRouter([{
@@ -34,7 +35,8 @@ export const Routes = createBrowserRouter([{
             element: <Login></Login>
         },
         {
-
+            path:'/user',
+            element: <User></User>
         }
     ]
 
