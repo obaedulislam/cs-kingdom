@@ -1,11 +1,18 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import LeftSideBar from '../../Shared/LeftSideBar/LeftSideBar';
+import Courses from '../Courses/Courses';
 
 const Home = () => {
-    const courses = useLoaderData();
+
     return (
-        <div>
-            <h1>Home page & Website contain: {courses.length}</h1>
+        <div className='max-w-[1150px] mx-auto py-16 grid grid-cols-12 gap-8'>
+            <div className='col-span-3 '>
+                <LeftSideBar></LeftSideBar>
+            </div>
+            <div className='col-span-9'>
+                <Courses></Courses>
+            </div>
+
         </div>
     );
 };

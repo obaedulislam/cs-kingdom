@@ -31,6 +31,7 @@ const Header = () => {
             </div>
             </Link>
             <nav className="nav-item md:flex items-center hidden">
+                <NavLink to='/home'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Home</NavLink>
                 <NavLink to='/courses'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Courses</NavLink>
                 <NavLink to='/faq'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>FAQ</NavLink>
                 <NavLink to="/blog" className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Blog</NavLink>

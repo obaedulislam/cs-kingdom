@@ -1,15 +1,19 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-const Courses = () => {
-    const courses = useLoaderData();
-    console.log(courses);
-    const {id, course_name} = courses;
+import RightSideBar from '../../Shared/RightSideBar/RightSideBar';
 
-    return (
-        <div>
-            <h1>This is Course: {course_name}</h1>
-            <p>{course_name}</p>
+const Courses = ({course}) => {
+    const courses = useLoaderData();
+     return (
+        <div className='grid grid-cols-12 gap-4'>
+            {
+            courses.map(course => <RightSideBar
+                key={course.id}
+                course = {course}
+            ></RightSideBar>)
+            }
+
         </div>
     );
 };
