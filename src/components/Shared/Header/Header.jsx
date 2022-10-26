@@ -41,7 +41,7 @@ const Header = () => {
                     user?.uid ? 
                     <div className="flex items-center">
                         <Link to='/user'><img className="w-[35px] h-[35px] rounded-full mr-4" src={user?.photoURL} alt="User" /></Link>
-                        <button onClick={handleSignOut}  className=' bg-[#FAB400] duration-300 hover:bg-[#c99204] rounded text-black  text-[14px] font-semibold py-1 px-2 ' >Log Out</button>
+                        <button to='/login' onClick={handleSignOut}  className=' bg-[#FAB400] duration-300 hover:bg-[#c99204] rounded text-black  text-[14px] font-semibold py-1 px-2 ' >Log Out</button>
                     </div>
                     :
                     <Link to="/login">

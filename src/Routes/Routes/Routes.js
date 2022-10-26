@@ -7,6 +7,7 @@ import Home from '../../components/Pages/Home/Home';
 import Login from '../../components/Pages/Login/Login';
 import Register from '../../components/Pages/Register/Register';
 import User from '../../components/Pages/User/User';
+import TermsAndCondition from '../../components/TermsAndCondition/TermsAndCondition';
 import Main from '../../Layouts/Main';
 
 export const Routes = createBrowserRouter([{
@@ -42,7 +43,11 @@ export const Routes = createBrowserRouter([{
         {
             path:'/user',
             element: <User></User>
-        }
+        },
+        {
+            path: '/register/terms',
+            element: <TermsAndCondition></TermsAndCondition>
+        }, 
     ]
 
 }]); 
