@@ -13,7 +13,7 @@ const User = () => {
             <h1 className='lg:text-5xl sm:text-3xl text-2xl mt-3 text-[#FAB400]  font-bold '> User Data</h1>
 
             <div className='flex justify-center mt-4'>
-                <img className='rounded-full' src={user?.photoURL} alt={user?.displayName} />
+                <img className='rounded-full w-32 h-32' src={user?.photoURL} alt={user?.displayName} />
             </div>
             <h1 className='lg:text-3xl sm:text-3xl text-xl mt-3 text-[#FAB400]  font-bold '> {user?.displayName}</h1>
             <h1 className='lg:text-2xl sm:text-lg text-md text-[#9c6bf2] font-bold '> {user?.email}</h1>

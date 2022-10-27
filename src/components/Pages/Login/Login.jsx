@@ -73,10 +73,12 @@ const Login = () => {
     }
 
     return (
-        <div className='py-16 max-w-[900px] grid grid-cols-2 mx-auto gap-20'>
-            <div className="side-img flex items-center">
-                <img className='w-full mx-auto ' src={signinphoto} alt="" />
+        <div className='py-16 max-w-[900px] grid md:grid-cols-2 grid-cols-1 md:px-0 px-3  mx-auto gap-20'>
+
+            <div className=" side-img flex items-center ">
+                <img className='md:w-full sm:w-[50%] w-[60%]  mx-auto ' src={signinphoto} alt="" />
             </div>
+
             <div className="form-control w-full mx-auto bg-gray-900 p-5 rounded-xl shadow-xl">
 
                 <form onSubmit={handleFormSubmit}>

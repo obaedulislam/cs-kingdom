@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { BsFillCartPlusFill } from "react-icons/bs";
 import {  useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
@@ -9,7 +10,15 @@ const PremiumAccess = () => {
     const course = useLoaderData();
     const {id, title, course_name, image_url, rating, total_enroll, price, instructor, description, course_features} = course;
 
+    const tax = (parseFloat(price) * 0.20).toFixed(2);
+
+    const subtotal =  parseFloat(price) + parseFloat(tax);
+    const total = subtotal.toFixed(2);
+
     const {user} =  useContext(AuthContext);
+    const handlePayment = () => {
+        toast.success('Enrolled Course Successfully. Please check your email for details information.');
+    }
 
     return (
         <div className='max-w-[1150px] mx-auto lg:py-16 md:py-12 py-8 md:px-0 px-3'>
@@ -34,7 +43,7 @@ const PremiumAccess = () => {
                         <input type="text" placeholder="Type here" class="input input-sm w-full max-w-xs border-slate-700  rounded-0  " />
                     </div>
                     <div className="checkout-btn mt-7">
-                            <button className=" text-black lg:text-2xl sm:text-xl text-md py-1 w-full  font-bold rounded-lg bg-[#FAB400] duration-300  hover:bg-[#c99204] flex justify-center items-center cursor-pointer">Pay Now <BsFillCartPlusFill className=' ml-1 lg:text-3xl sm:text-xl text-md'></BsFillCartPlusFill></button>
+                            <button onClick={handlePayment } className=" text-black lg:text-2xl sm:text-xl text-md py-1 w-full  font-bold rounded-lg bg-[#FAB400] duration-300  hover:bg-[#c99204] flex justify-center items-center cursor-pointer">Pay Now <BsFillCartPlusFill className=' ml-1 lg:text-3xl sm:text-xl text-md'></BsFillCartPlusFill></button>
                     </div>
                 </div>
                {/* Check Out Left End */}
@@ -54,12 +63,12 @@ const PremiumAccess = () => {
                          </div>
                         <div className='flex justify-between items-center sm:mt-2 mt-1'>
                             <h2 className='font-semibold lg:text-xl  sm:text-lg text-lg'>Tax: </h2>
-                            <h2 className='text-[#FAB400] md:text-2xl sm:text-lg text-md font-bold'> $11.23</h2>
+                            <h2 className='text-[#FAB400] md:text-2xl sm:text-lg text-md font-bold'> {tax}</h2>
                          </div>
                          <div className='h-[1px] w-full bg-slate-900 md:mt-10 sm:mt-5 mt-3  '></div>
                         <div className='flex justify-between items-center sm:mt-2 mt-1'>
                             <h2 className='font-semibold lg:text-xl  sm:text-lg text-lg'>Total: </h2>
-                            <h2 className='text-[#FAB400] font-bold md:text-2xl sm:text-lg text-md'> $11.23</h2>
+                            <h2 className='text-[#FAB400] font-bold md:text-2xl sm:text-lg text-md'> {total}</h2>
                          </div>
 
                     </div>
