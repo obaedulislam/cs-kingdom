@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsFillCartPlusFill } from "react-icons/bs";
 import {  useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+
+
 
 const PremiumAccess = () => {
     const course = useLoaderData();
     const {id, title, course_name, image_url, rating, total_enroll, price, instructor, description, course_features} = course;
+
+    const {user} =  useContext(AuthContext);
 
     return (
         <div className='max-w-[1150px] mx-auto lg:py-16 md:py-12 py-8 md:px-0 px-3'>
@@ -19,8 +24,8 @@ const PremiumAccess = () => {
 
                     <h3 className='font-semibold mt-7 uppercase tracking-wide'>Billing Information</h3>
                     <div className='billing-person bg-[#121212] shadow-lg rounded mt-2'>
-                        <p className='border-b-[1px] border-[#000] px-3 py-2'>Name: <span>Obaedul Islam</span></p>
-                        <p className='px-3 py-2'>Eamil: <span>Obaed.cse@gmail.com</span></p>
+                        <p className='border-b-[1px] border-[#000] px-3 py-2'>Name: <span>{user?.displayName}</span></p>
+                        <p className='px-3 py-2'>Email: <span>{user?.email}</span></p>
                     </div>
 
                     <h3 className='font-semibold mt-7 uppercase tracking-wide'>Payment Menthod</h3>

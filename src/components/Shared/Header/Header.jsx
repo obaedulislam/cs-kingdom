@@ -4,6 +4,7 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import logo from "../../../assets/logo.png"
 import './Header.css'
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -31,12 +32,16 @@ const Header = () => {
             </div>
             </Link>
             <nav className="nav-item md:flex items-center hidden">
-                <NavLink to='/home'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Home</NavLink>
                 <NavLink to='/courses'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Courses</NavLink>
                 <NavLink to='/faq'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>FAQ</NavLink>
                 <NavLink to="/blog" className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Blog</NavLink>
-                <NavLink to="/" className={({isActive}) => isActive ? '  text-[#9c6bf2]' : undefined }><MdOutlineDarkMode className="text-[26px] " ></MdOutlineDarkMode></NavLink>
-
+                <NavLink to="/">
+</NavLink>
+<label className="swap swap-rotate mt-1">
+                                <input type="checkbox" />
+                                <IoSunnyOutline className="swap-on fill-current text-2xl" />
+                                <IoMoonOutline className="swap-off fill-current text-2xl" />
+                  </label>
                 <div>
 
                 {

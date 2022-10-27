@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Blog from '../../components/Pages/Blog/Blog';
 import CourseDetails from '../../components/Pages/CourseDetails/CourseDetails';
+import ErrorPage from '../../components/Pages/ErrorPage/ErrorPage';
 import Faq from '../../components/Pages/Faq/Faq';
 import Home from '../../components/Pages/Home/Home';
 import Login from '../../components/Pages/Login/Login';
@@ -18,26 +19,21 @@ export const Routes = createBrowserRouter([{
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:4100/courses/')
-        },
-        {
-            path: '/home',
-            element: <Home></Home>,
-            loader: () => fetch('http://localhost:4100/courses/')
+            loader: () => fetch('https://b610-lerning-platform-server-side-obaedulislam.vercel.app/courses/')
         },
         {
             path: '/courses',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:4100/courses/')
+            loader: () => fetch('https://b610-lerning-platform-server-side-obaedulislam.vercel.app/courses/')
         },
         {
             path: '/course/:id',
-            loader: ({params}) => fetch(`http://localhost:4100/course/${params.id}`),
+            loader: ({params}) => fetch(`https://b610-lerning-platform-server-side-obaedulislam.vercel.app/course/${params.id}`),
             element: <CourseDetails></CourseDetails>
         },
         {
             path: '/premium-access/:id',
-            loader: ({params}) => fetch(`http://localhost:4100/premium-access/${params.id}`),
+            loader: ({params}) => fetch(`https://b610-lerning-platform-server-side-obaedulislam.vercel.app/premium-access/${params.id}`),
             element: <PremiumAccess></PremiumAccess>
         },
         {
@@ -64,7 +60,12 @@ export const Routes = createBrowserRouter([{
             path: '/register/terms',
             element: <TermsAndCondition></TermsAndCondition>
         }, 
+        {
+            path: '*', element: <ErrorPage></ErrorPage>
+          }
     ]
+
+
 
 }]); 
 

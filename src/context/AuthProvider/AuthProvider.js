@@ -41,10 +41,23 @@ const AuthProvider = ({children}) => {
         return sendEmailVerification(auth.currentUser);
     }
 
+    // useEffect(() => {
+    //     const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
+    //         console.log('User', currentUser);
+    //         if(currentUser === null || currentUser?.emailVerified){
+    //             setUser(currentUser);
+    //         }
+    //         setLoading(false);
+    //     });
+    //     return () => {
+    //         unsubscribe();
+    //     }
+    // }, [])
+    
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
-            console.log('User', currentUser);
-            if(currentUser === null || currentUser.emailVerified){
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log('track using useEffect', currentUser);
+            if (currentUser === null || (currentUser.emailVerified || currentUser.providerData[0].providerId === "github.com")) {
                 setUser(currentUser);
             }
             setLoading(false);

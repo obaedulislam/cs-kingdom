@@ -9,7 +9,7 @@ const LeftSideBar = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:4100/courses')
+        fetch('https://b610-lerning-platform-server-side-obaedulislam.vercel.app/courses')
         .then(res => res.json())
         .then(data => setCourses(data))
 
