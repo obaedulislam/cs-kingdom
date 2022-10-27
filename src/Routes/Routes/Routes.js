@@ -11,6 +11,7 @@ import User from '../../components/Pages/User/User';
 import PremiumAccess from '../../components/PremiumAccess/PremiumAccess';
 import TermsAndCondition from '../../components/TermsAndCondition/TermsAndCondition';
 import Main from '../../Layouts/Main';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 export const Routes = createBrowserRouter([{
     path: '/',
@@ -33,8 +34,8 @@ export const Routes = createBrowserRouter([{
         },
         {
             path: '/premium-access/:id',
-            loader: ({params}) => fetch(`https://b610-lerning-platform-server-side-obaedulislam.vercel.app/premium-access/${params.id}`),
-            element: <PremiumAccess></PremiumAccess>
+            element: <PrivateRoute><PremiumAccess></PremiumAccess></PrivateRoute>,
+            loader: ({params}) => fetch(`https://b610-lerning-platform-server-side-obaedulislam.vercel.app/premium-access/${params.id}`)
         },
         {
             path: '/faq',
