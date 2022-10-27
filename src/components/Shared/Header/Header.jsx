@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineDarkMode } from "react-icons/md";
-import cslogo from "../../../assets/cslogo.png"
+import logo from "../../../assets/logo.png"
 import './Header.css'
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
@@ -23,7 +23,7 @@ const Header = () => {
             <div className="site-logo flex items-center">
 
                     <div className="logo">
-                        <img src={cslogo}alt="Quiz Dev" className="w-[60px] h-[60px]" />
+                        <img src={logo}alt="Quiz Dev" className="w-[60px] h-[60px]" />
                     </div>
                     <div className="logo-text ml-1">
                         <h1 className="md:text-4xl sm:text-3xl text-2xl font-semibold"><span className="text-[#FAB400] ">CS</span> <span className="text-[#9c6bf2]">Kingdom</span> </h1>
@@ -37,11 +37,12 @@ const Header = () => {
                 <NavLink to="/blog" className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Blog</NavLink>
                 <NavLink to="/" className={({isActive}) => isActive ? '  text-[#9c6bf2]' : undefined }><MdOutlineDarkMode className="text-[26px] " ></MdOutlineDarkMode></NavLink>
 
-                <div  >
+                <div>
+
                 {
                     user?.uid ? 
-                    <div className="flex items-center">
-                        <Link to='/user'><img className="w-[35px] h-[35px] rounded-full mr-4" src={user?.photoURL} alt="User" /></Link>
+                    <div className="flex items-center header-img-title">
+                        <Link to='/user'><img className="w-[35px] h-[35px] rounded-full mr-4 tooltip" title={user.displayName} src={user?.photoURL} alt="User"  /></Link>
                         <button to='/login' onClick={handleSignOut}  className=' bg-[#FAB400] duration-300 hover:bg-[#c99204] rounded text-black  text-[14px] font-semibold py-1 px-2 ' >Log Out</button>
                     </div>
                     :
@@ -81,7 +82,7 @@ const Header = () => {
                     <Link to='/'>
                         <div className="site-logo flex items-center">
                             <div className="logo">
-                                <img src={cslogo} alt="Quiz Dev" className="w-[50px] h-[50px] sm:w-[40px] sm:h-[40px]" />
+                                <img src={logo} alt="Quiz Dev" className="w-[50px] h-[50px] sm:w-[40px] sm:h-[40px]" />
                             </div>
                             <div className="logo-text ml-1">
                                 <h1 className="text-4xl sm:text-2xl  font-semibold"><span className="text-[#FAB400] ">CS</span> <span className="text-[#9c6bf2]">Kingdom</span> </h1>
@@ -144,6 +145,16 @@ const Header = () => {
                           className='font-medium tracking-wide text-center text-white hover:text-[#FAB400]  transition-colors duration-200 hover:text-deep-purple-accent-400'
                         >
                           <MdOutlineDarkMode className="text-[26px] mt-1 mb-0 pb-0" ></MdOutlineDarkMode>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to='/blog'
+                          aria-label='Blog'
+                          title='Blog'
+                          className='font-medium tracking-wide text-white hover:text-[#FAB400]  transition-colors duration-200 hover:text-deep-purple-accent-400'
+                        >
+                          Blog
                         </Link>
                       </li>
                       <li>

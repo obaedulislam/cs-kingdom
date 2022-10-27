@@ -46,9 +46,7 @@ const Login = () => {
             console.error(e);
             setError(e.message);
         })
-        .finally(() => {
-            setLoading(false)
-        })
+
     }
     
     const handleGoogleSignIn = () => {

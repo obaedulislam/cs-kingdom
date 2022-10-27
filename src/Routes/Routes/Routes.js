@@ -1,8 +1,10 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Blog from '../../components/Pages/Blog/Blog';
-import CourseDetails from '../../components/Pages/CourseDetails/CourseDetails';
-import Courses from '../../components/Pages/Courses/Courses';
+import Cdetails from '../../components/Pages/Cdetails/Cdetails';
+
+
+
 import Faq from '../../components/Pages/Faq/Faq';
 import Home from '../../components/Pages/Home/Home';
 import Login from '../../components/Pages/Login/Login';
@@ -18,22 +20,22 @@ export const Routes = createBrowserRouter([{
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:5000/courses/')
+            loader: () => fetch('http://localhost:4100/courses/')
         },
         {
             path: '/home',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:5000/courses/')
+            loader: () => fetch('http://localhost:4100/courses/')
         },
         {
             path: '/courses',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:5000/courses/')
+            loader: () => fetch('http://localhost:4100/courses/')
         },
         {
-            path: '/course/:id',
-            element: <CourseDetails></CourseDetails>,
-            loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+            path: '/courses/:id',
+            loader: ({params}) => fetch(`http://localhost:4100/courses/${params.id}`),
+            element: <Cdetails></Cdetails>
         },
         {
             path: '/faq',

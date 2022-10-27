@@ -33,6 +33,7 @@ const AuthProvider = ({children}) => {
     }
 
     const updateUserProfile = (profile) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, profile)
     }
 
@@ -47,7 +48,6 @@ const AuthProvider = ({children}) => {
                 setUser(currentUser);
             }
             setLoading(false);
-            setUser(currentUser);
         });
         return () => {
             unsubscribe();

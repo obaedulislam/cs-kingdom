@@ -70,6 +70,8 @@ const Register = () => {
         .catch(error => {
             console.error(error);
             setError(error.message);
+            const errorCode = error.code;
+            toast.error(`Please provide valid data, ${errorCode}`)
         })
     }
 
@@ -131,7 +133,7 @@ const Register = () => {
                 </div>
                 <div>
                     <p className="text-danger mt-2 mb-0">
-                    {error}
+                    {error.message}
                     </p>
                 </div>
 
