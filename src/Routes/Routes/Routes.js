@@ -36,6 +36,11 @@ export const Routes = createBrowserRouter([{
             element: <CourseDetails></CourseDetails>
         },
         {
+            path: '/premium-access/:id',
+            loader: ({params}) => fetch(`http://localhost:4100/premium-access/${params.id}`),
+            element: <PremiumAccess></PremiumAccess>
+        },
+        {
             path: '/faq',
             element:<Faq></Faq>
         },
@@ -59,10 +64,6 @@ export const Routes = createBrowserRouter([{
             path: '/register/terms',
             element: <TermsAndCondition></TermsAndCondition>
         }, 
-        {
-            path: '/premium-access',
-            element: <PremiumAccess></PremiumAccess>
-        }
     ]
 
 }]); 
