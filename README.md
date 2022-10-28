@@ -6,7 +6,7 @@
 
 ## Live Website: https://cs-kingdom.web.app/
 
-### I have done this Project:-
+### Things I have done this Project:-
 1. `Website Navigation or Route Public & Private Route Setup with conditionally `   
 2. `Login & Register System Implement by Firebase Authentication System`   
 3. `In General Login & Sign Up system implemented  using Name, Email, Password, & PhotoUrl Implemented`

@@ -14,7 +14,7 @@ const Footer = () => {
 
                  <div className="app flex flex-col items-center sm:flex-row justify-center my-5 ">
                     <Link>
-                        <div class="flex items-center border rounded-lg px-4 py-2  mx-2">
+                        <div class="flex items-center border rounded-lg px-4 py-2 bg-[#111111]  mx-2">
                             <img src={googleplay} class="w-5 md:w-6" alt="welcome"/>
                             <div class="text-left ml-3">
                                 <p class="text-xs text-gray-200">Download from </p>
@@ -23,7 +23,7 @@ const Footer = () => {
                         </div>
                     </Link>
                     <Link>
-                        <div class="flex items-center border rounded-lg px-4 py-2  mx-2 md:mt-0 mt-2">
+                        <div class="flex items-center border rounded-lg px-4 bg-[#111111] py-2  mx-2 md:mt-0 mt-2">
                             <BsApple class="text-[22px] text-gray-300" ></BsApple>
                             <div class="text-left ml-3">
                                 <p class="text-xs text-gray-200">Download from </p>

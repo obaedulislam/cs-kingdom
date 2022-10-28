@@ -69,12 +69,12 @@ const CourseDetails = () => {
                     <div className="course-feature">
                     <h3 className='text-[#FAB400] text-xl font-semibold mt-4'>Feature of this Course:</h3>
                         <ul className='list-decimal ml-10'>
-                            <li className='font-bold'><p>{course_features[0]}</p></li>
-                            <li className='font-bold'><p>{course_features[1]}</p></li>
-                            <li className='font-bold'><p>{course_features[2]}</p></li>
-                            <li className='font-bold'><p>{course_features[3]}</p></li>
-                            <li className='font-bold'><p>{course_features[4]}</p></li>
-                            <li className='font-bold'><p>{course_features[5]}</p></li>
+                            <li className='font-semibold'><p>{course_features[0]}</p></li>
+                            <li className='font-semibold'><p>{course_features[1]}</p></li>
+                            <li className='font-semibold'><p>{course_features[2]}</p></li>
+                            <li className='font-semibold'><p>{course_features[3]}</p></li>
+                            <li className='font-semibold'><p>{course_features[4]}</p></li>
+                            <li className='font-semibold'><p>{course_features[5]}</p></li>
                         </ul>
                     </div>
                 </div>
