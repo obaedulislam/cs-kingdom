@@ -27,7 +27,7 @@ const RightSideBar = ({course}) => {
                             </div>
                         </div>
                         <div className="course-price">
-                            <h4 className='  text-[18px]'>Price:  <span className='ml-1 text-[#FAB400] text-lg font-semibold'>$ {price}</span></h4>
+                            <h4 className='  text-[18px]'>Course Price:  <span className='ml-1 text-[#FAB400] text-lg font-semibold'>$ {price}</span></h4>
 
                         </div>
                         <div className=" mt-3">

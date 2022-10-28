@@ -47,8 +47,8 @@ const Login = () => {
         })
         .catch(e => {
             console.error(e);
-            setError(e.message);
-            toast.error(error);
+            setError(e.code);
+            toast.error(e.code);
         })
     }
 
@@ -59,6 +59,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             toast.success("Login Successfully with Google");
+            navigate(from, {replace: true});
         })
         .catch(error => {
             toast.error(error);
@@ -72,6 +73,7 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             toast.success("Login Successfully with Github");
+            navigate(from, {replace: true});
             console.log(user);
         })
         .catch(error => {

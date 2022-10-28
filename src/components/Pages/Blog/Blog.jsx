@@ -57,8 +57,8 @@ const Blog = () => {
                     </ul>
                     <p className=' mt-3'><span className= "text-[#9c6bf2] font-bold underline">Asynchronous:</span> Asynchronous is executing a callback function. The moment we get the response from the other server or database it will execute a callback function. Callback functions are called as soon as some work is finished and this is because the node.js uses an event-driven architecture. The single thread doesn’t work with the request instead it sends the request to another system which resolves the request and it is accessible for another request.</p>
                     <p><span className= "text-[#9c6bf2] font-bold underline">Non-blocking I/o:</span> Non-blocking i/o  means working with multiple requests without blocking the thread for a single request. I/O basically interacts with external systems such as files, databases. Node.js is not used for CPU-intensive work means for calculations, video processing because a single thread cannot handle the CPU works.</p>
-                    <div className="blog-img">
-                        <img src={nodejs} alt="node" />
+                    <div className="blog-img flex justify-center">
+                        <img className='max-w-[500px]' src={nodejs} rounded-xl alt="node" />
                     </div>
                 </div>
             </div>
