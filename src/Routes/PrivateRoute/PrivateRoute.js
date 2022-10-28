@@ -6,14 +6,12 @@ const PrivateRoute = ({children}) => {
 
     const {user, loading} = useContext(AuthContext);
     const location = useLocation();
-
+    // Loading Spinner 
     if(loading){
-        return <button type="button" class="bg-indigo-500 ..." disabled>
-                    <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
-                    Processing...
-                </button>;
+        return <div className='flex justify-center py-8'><button className="btn text-[#9c6bf2] bg-[#FAB400]  h-[70px] w-[70px] rounded-full loading"></button></div>;
     }
 
+    //Loading Navigation Place
     if(!user) {
         return <Navigate to='/login' state={{from: location}} replace></Navigate>
     }

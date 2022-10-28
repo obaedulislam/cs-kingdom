@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="">
       <RouterProvider router={Routes}></RouterProvider>
+      
       <Toaster
-
         toastOptions={{
           style: {
             background: 'yellow',

@@ -10,6 +10,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const {user, logOut} =  useContext(AuthContext);
 
+
+  //Logout Button Func
   const handleSignOut = () => {
     logOut()
     .then( () => {})
@@ -18,7 +20,9 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-10">
+      {/* Laptop Menu Start */}
       <div className="header bg-gray-900 py-2 w-[100%]">
+        
         <div className="lg:px-0 md:px-5 px-3  navbar-menu max-w-[1150px]   mx-auto flex justify-between items-center">
         <Link to='/'>
             <div className="site-logo flex items-center">
@@ -35,28 +39,29 @@ const Header = () => {
                 <NavLink to='/courses'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Courses</NavLink>
                 <NavLink to='/faq'className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>FAQ</NavLink>
                 <NavLink to="/blog" className={({isActive}) => isActive ? 'border-b-4 border-[#FAB400] text-[#9c6bf2]' : undefined }>Blog</NavLink>
-                <NavLink to="/">
-</NavLink>
-<label className="swap swap-rotate mt-1">
-                                <input type="checkbox" />
-                                <IoSunnyOutline className="swap-on fill-current text-2xl" />
-                                <IoMoonOutline className="swap-off fill-current text-2xl" />
+                <NavLink></NavLink>
+                <label className="swap swap-rotate mt-1">
+                        <input type="checkbox" />
+                        <IoSunnyOutline className="swap-on fill-current text-2xl" />
+                        <IoMoonOutline className="swap-off fill-current text-2xl" />
                   </label>
                 <div>
 
-                {
-                    user?.uid ? 
-                    <div className="flex items-center header-img-title">
-                        <Link to='/user'><img className="w-[35px] h-[35px] rounded-full mr-4 tooltip" title={user.displayName} src={user?.photoURL} alt="User"  /></Link>
-                        <button to='/login' onClick={handleSignOut}  className=' bg-[#FAB400] duration-300 hover:bg-[#c99204] rounded text-black  text-[14px] font-semibold py-1 px-2 ' >Log Out</button>
-                    </div>
-                    :
-                    <Link to="/login">
-                        <button className="bg-[#9c6bf2] duration-300 hover:bg-[#c3a6f7] rounded text-black text-[15px] font-semibold py-1 px-3 " to='/login'>Login</button>
-                    </Link>
-                }
+                  {
+                      user?.uid ? 
+                      <div className="flex items-center header-img-title">
+                          <Link to='/user'><img className="w-[35px] h-[35px] rounded-full mr-4 tooltip" title={user.displayName} src={user?.photoURL} alt="User"  /></Link>
+                          <button to='/login' onClick={handleSignOut}  className=' bg-[#FAB400] duration-300 hover:bg-[#c99204] rounded text-black  text-[14px] font-semibold py-1 px-2 ' >Log Out</button>
+                      </div>
+                      :
+                      <Link to="/login">
+                          <button className="bg-[#9c6bf2] duration-300 hover:bg-[#c3a6f7] rounded text-black text-[15px] font-semibold py-1 px-3 " to='/login'>Login</button>
+                      </Link>
+                  }
                 </div>
             </nav>
+             {/* Laptop Menu End */}
+
 
             <div className='lg:hidden md:hidden bg-[#121212'>
             <button
@@ -80,17 +85,20 @@ const Header = () => {
                 />
               </svg>
             </button>
+            {/* Toogle Button End */}
+
+            {/* Tablet Mobile Menu Start */}
             {isMenuOpen && (
               <div className='absolute top-0 left-0 w-full'>
-                <div className='p-5 bg-[#121212] border rounded shadow-sm'>
+                <div className='p-5 bg-[#121212]  rounded shadow-sm'>
                   <div className='flex items-center justify-between mb-4'>
                     <Link to='/'>
                         <div className="site-logo flex items-center">
                             <div className="logo">
-                                <img src={logo} alt="Quiz Dev" className="w-[50px] h-[50px] sm:w-[40px] sm:h-[40px]" />
+                                <img src={logo} alt="Quiz Dev" className="sm:w-[50px] sm:h-[50px] w-[40px] h-[40px]" />
                             </div>
                             <div className="logo-text ml-1">
-                                <h1 className="text-4xl sm:text-2xl  font-semibold"><span className="text-[#FAB400] ">CS</span> <span className="text-[#9c6bf2]">Kingdom</span> </h1>
+                                <h1 className="text-4xl sm:text-xl  text-lg  font-semibold"><span className="text-[#FAB400] ">CS</span> <span className="text-[#9c6bf2]">Kingdom</span> </h1>
                             </div>
                         </div>
                     </Link>
@@ -143,40 +151,34 @@ const Header = () => {
                         </Link>
                       </li>
                       <li className="text-center flex justify-center">
-                        <Link
-                          to='/'
-                          aria-label='Mode'
-                          title='Mode'
-                          className='font-medium tracking-wide text-center text-white hover:text-[#FAB400]  transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                          <MdOutlineDarkMode className="text-[26px] mt-1 mb-0 pb-0" ></MdOutlineDarkMode>
-                        </Link>
+                      <label className="swap swap-rotate mt-1">
+                        <input type="checkbox" />
+                        <IoSunnyOutline className="swap-on fill-current text-2xl" />
+                        <IoMoonOutline className="swap-off fill-current text-2xl" />
+                       </label>
+                       
                       </li>
                       <li>
-                        <Link
-                          to='/blog'
-                          aria-label='Blog'
-                          title='Blog'
-                          className='font-medium tracking-wide text-white hover:text-[#FAB400]  transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                          Blog
-                        </Link>
+                          {
+                              user?.uid ? 
+                              <div className="md:flex sm:block block  items-center header-img-title">
+                                  <Link to='/user'><img className="w-[35px] h-[35px] rounded-full mr-4 tooltip" title={user.displayName} src={user?.photoURL} alt="User"  /></Link>
+                                  <button to='/login' onClick={handleSignOut}  className=' bg-[#FAB400] duration-300 hover:bg-[#c99204] rounded text-black  text-[14px] font-semibold py-1 px-2 ' >Log Out</button>
+                              </div>
+                              :
+                              <Link to="/login">
+                                  <button className="bg-[#9c6bf2] duration-300 hover:bg-[#c3a6f7] rounded text-black text-[15px] font-semibold py-1 px-3 " to='/login'>Login</button>
+                              </Link>
+                          }
                       </li>
-                      <li>
-                        <Link
-                          to='/blog'
-                          aria-label='Blog'
-                          title='Blog'
-                          className='font-medium tracking-wide text-white hover:text-[#FAB400]  transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                          Blog
-                        </Link>
-                      </li>
+
                     </ul>
                   </nav>
                 </div>
               </div>
             )}
+            {/* Tablet Mobile Menu End */}
+
         </div>
         </div>
 

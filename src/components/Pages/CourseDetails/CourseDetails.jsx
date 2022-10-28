@@ -24,7 +24,9 @@ const CourseDetails = () => {
             <div className='lg:col-span-3 md:col-span-3 sm:col-span-12 col-span-12 md:px-0 sm:px-3 px-3'>
                 <LeftSideBar></LeftSideBar>
             </div>
+            {/* Left Side Course Title Navigation End */}
 
+            {/* Right Side Course Description Start */}
             <div className='md:col-span-9  sm:col-span-12 col-span-12 md:px-0 sm:px-3 bg-[#151515] rounded-lg px-3' ref={ref} >
                 <div className="course-header bg-gray-900 rounded-t-lg flex justify-between p-4">
                     <div>
@@ -51,13 +53,13 @@ const CourseDetails = () => {
                     <div>
                     <Pdf targetRef={ref} filename={title} style={{width: 900, height: 1000, background: 'blue'}}  options={options} x={1} y={.5} scale={1}>
                         {({toPdf}) => (
-                            <AiFillPrinter onClick={toPdf} className='text-3xl'></AiFillPrinter>
+                            <AiFillPrinter onClick={toPdf} className='text-4xl text-[#FAB400] duration-200 cursor-pointer hover:text-[#9c6bf2] '></AiFillPrinter>
                         )}
                     </Pdf>
                         
                     </div>
                 </div>
-
+                {/*  Course Header  End */}      
 
                 <div className="course-body p-5">
                     <img className='w-[400px] h-[300px] mx-auto rounded-xl' src={image_url} alt="" />
@@ -76,18 +78,19 @@ const CourseDetails = () => {
                         </ul>
                     </div>
                 </div>
+                {/*  Course Description & image End */}      
 
-
-                <div className="course-footer bg-slate-900 rounded-t-lg p-5 flex sm:flex-row flex-col justify-between items-center">
+                <div className="course-footer bg-slate-900 rounded-b-lg p-5 flex sm:flex-row flex-col justify-between items-center">
                     <div className="update-date">
                         <p className='text-lg'>Last Update: <span className='text-[#FAB400]  font-bold '>{instructor?.last_update}</span></p>
                     </div>
                     <div className="get-premium-access  sm:mt-0 mt-3">
-                        <Link to={`/premium-access/${id}`} ><button className=" text-black py-1 px-5 sm:text-lg text-md  font-bold rounded-lg bg-[#9c6bf2] duration-300  hover:bg-[#c3a6f7] hover:scale-105 flex justify-center items-center cursor-pointer"> <TbPremiumRights className=' mr-2 text-2xl'></TbPremiumRights> Get Premium Access</button></Link>
+                        <Link to={`/premium-access/${id}`} > <button className=" text-black py-1 px-5 sm:text-lg text-md  font-bold rounded-lg bg-[#9c6bf2] duration-300  hover:bg-[#c3a6f7] hover:scale-105 flex justify-center items-center cursor-pointer">  <TbPremiumRights className=' mr-2 text-2xl'></TbPremiumRights> Get Premium Access</button></Link>
                     </div>
                 </div>
+                {/*  Course Footer End */}      
             </div>
-
+        {/* Right Side Course Description End */}
         </div>
     );
 };

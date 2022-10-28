@@ -16,18 +16,22 @@ const PremiumAccess = () => {
     const total = subtotal.toFixed(2);
 
     const {user} =  useContext(AuthContext);
+
+    //Payment Confirmation Button Handler Function
     const handlePayment = () => {
         toast.success('Enrolled Course Successfully. Please check your email for details information.');
     }
 
     return (
         <div className='max-w-[1150px] mx-auto lg:py-16 md:py-12 py-8 md:px-0 px-3'>
+
             <div className="page-head flex justify-center items-center">
                 <h1 className='lg:text-5xl sm:text-3xl text-2xl text-[#FAB400]  font-bold '>Checkout Now</h1>
             </div>  
-            {/* Check Top  End */}
+            {/* Checkout Title Top  End */}
 
             <div className="checkout-container grid grid-cols-12 gap-5 mt-12">
+
                 <div className="checkout-left sm:col-span-8 col-span-12 bg-black p-5 rounded-xl">
                     <h4 className='px-3 py-2  font-semibold text-xl shadow-lg bg-[#121212] text-[#9c6bf2]'>Please Complete payment detail to enroll this course</h4>
 
@@ -36,15 +40,20 @@ const PremiumAccess = () => {
                         <p className='border-b-[1px] border-[#000] px-3 py-2'>Name: <span>{user?.displayName}</span></p>
                         <p className='px-3 py-2'>Email: <span>{user?.email}</span></p>
                     </div>
+                    {/* Billing Information End */}
 
                     <h3 className='font-semibold mt-7 uppercase tracking-wide'>Payment Menthod</h3>
                     <div className='billing-person bg-[#121212] shadow-lg  mt-2 px-3 py-3'>
                         <label className='mr-3' htmlFor="text">Bank AC No.</label>
                         <input type="text" placeholder="Type here" class="input input-sm w-full max-w-xs border-slate-700  rounded-0  " />
                     </div>
+                    {/* Account To Pay End */}
+
                     <div className="checkout-btn mt-7">
                             <button onClick={handlePayment } className=" text-black lg:text-2xl sm:text-xl text-md py-1 w-full  font-bold rounded-lg bg-[#FAB400] duration-300  hover:bg-[#c99204] flex justify-center items-center cursor-pointer">Pay Now <BsFillCartPlusFill className=' ml-1 lg:text-3xl sm:text-xl text-md'></BsFillCartPlusFill></button>
                     </div>
+                    {/* Payment Button */}
+
                 </div>
                {/* Check Out Left End */}
 

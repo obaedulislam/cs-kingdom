@@ -12,15 +12,14 @@ import toast from 'react-hot-toast';
 
 const Register = () => {
 
-    
     const {googleProviderLogin, githubProviderLogin, createUser, signIn, verifyEmail, updateUserProfile} = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
     const[error, setError] = useState('');
-    // const[accepted, setAccepted] = useState(false);
     
+    // Google Sign In Button Handler Function
     const handleGoogleSignIn = () => {
         googleProviderLogin(googleProvider)
         .then(result => {
@@ -33,6 +32,7 @@ const Register = () => {
         })
     }
 
+    // Github Sign In Button  Handler Function
     const handleGithubSignIn = () => {
         githubProviderLogin(githubProvider)
         .then(result =>{
@@ -45,7 +45,7 @@ const Register = () => {
         })
     }
 
-
+    // Normal Submit Form Button Handler Function
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
@@ -53,10 +53,8 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-
         console.log(name, photoURL, email, password);
-
-
+        
         createUser(email, password)
         .then(result => {
             const user = result.user;
@@ -65,7 +63,7 @@ const Register = () => {
             handleUserUpdateProfile(name, photoURL);
             handleEmailVerification();
             form.reset();
-            toast.success('Please verify your email ');
+            toast.success('Successfully Sign Up! Please verify your email ');
         })
         .catch(error => {
             console.error(error);
@@ -75,7 +73,7 @@ const Register = () => {
         })
     }
 
-
+    // Update User From Login & SignUp Handler Function
     const handleUserUpdateProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
@@ -86,6 +84,7 @@ const Register = () => {
         .catch(error => console.error(error)) 
     }
 
+    // Email Verification Handler Function
     const handleEmailVerification = () => {
         verifyEmail()
         .then(() => {})
@@ -99,63 +98,74 @@ const Register = () => {
 
     return (
         <div className='py-16 max-w-[900px] grid md:grid-cols-2 grid-cols-1 md:px-0 px-3  mx-auto gap-20'>
-        <div className="side-img flex items-center">
-            <img className='md:w-full sm:w-[50%] w-[60%] mx-auto ' src={signupphoto} alt="" />
-        </div>
-        <div className="form-control w-full mx-auto bg-gray-900 p-5 rounded-xl shadow-xl">
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label className="label">
-                        <span className="label-text text-xl">Your Full Name:</span>
-                    </label>
-                    <input type="text" name='name' placeholder="Full name" className="input rounded-lg input-bordered bg-gray-700 w-full text-lg" />
-                </div>
-
-                <div className='mt-2'>
-                    <label className="label">
-                        <span className="label-text text-xl">Your Photo URL:</span>
-                    </label>
-                    <input type="url" name='photoURL' placeholder="Your photoURL" className="input rounded-lg input-bordered bg-gray-700 w-full text-lg" />
-                </div>
-
-                <div className='mt-2'>
-                    <label className="label">
-                        <span className="label-text text-xl">Your Email:</span>
-                    </label>
-                    <input type="email" name='email' placeholder="Your email" className="input rounded-lg input-bordered bg-gray-700 w-full text-lg" />
-                </div>
-
-                <div className='mt-2'>
-                    <label className="label ">
-                        <span className="label-text text-xl">Your Password:</span>
-                    </label>
-                    <input type="password" name='password' placeholder="Your password" className="input  input-bordered bg-gray-700 rounded-lg w-full text-lg " />
-                </div>
-                <div>
-                    <p className="text-danger mt-2 mb-0">
-                    {error.message}
-                    </p>
-                </div>
-
-                {/* <div className='mt-3 flex justify-center items-center'>
-                    <input className='w-4 h-4 cursor-pointer'   onClick={handleAcceptTerms} type="checkbox" name="checkbox" value="accepted"/>
-                    <Link to='terms' className='text-lg ml-2 cursor-pointer'><label htmlFor="checkbox"> Accept Terms & Condition</label></Link>
-                </div> */}
-
-                <div className='mt-7 '>
-                    <button  className=" text-black py-1 w-full text-xl font-bold rounded-lg bg-[#FAB400] duration-300  hover:bg-[#c99204] flex justify-center items-center cursor-pointer">Register <SiGnuprivacyguard className=' ml-1'></SiGnuprivacyguard></button>
-                    <p className='text-center mt-2'>Already Register? <span className='text-[#c3a6f7] hover:text-[#9c6bf2] duration-200 underline font-bold '><Link to='/login'>Login</Link></span></p>
-                    <p className='text-[#c3a6f7] text-xl text-center mt-3'>--------- OR ---------</p>
-                </div>
-            </form>
-
-            <div className='mt-5 '>
-                <button onClick = {handleGoogleSignIn} className=" text-[#9c6bf2] py-1 w-full text-lg font-semibold rounded-lg bg-[#111111] hover:bg-black  duration-300 flex justify-center items-center"><FcGoogle className='text-2xl'></FcGoogle> <span className='ml-2'>Continue with Google</span></button>
+            <div className="side-img flex items-center">
+                <img className='md:w-full sm:w-[50%] w-[60%] mx-auto ' src={signupphoto} alt="" />
             </div>
-            <div className='mt-2 '>
-                <button onClick={handleGithubSignIn} className=" text-[#9c6bf2] py-1 w-full text-lg font-semibold rounded-lg bg-[#111111] hover:bg-black duration-300  flex justify-center items-center"><GrGithub className='text-2xl'></GrGithub> <span className='ml-2'>Continue with Github</span></button>
+            <div className="form-control w-full mx-auto bg-gray-900 p-5 rounded-xl shadow-xl">
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label className="label ">
+                            <span className="label-text text-xl">Your Full Name:</span>
+                        </label>
+                        <input type="text" name='name' placeholder="Full name" className="input rounded-lg input-bordered bg-gray-700 w-full text-lg" required />
+                    </div>
+                    {/* Name Section Input End */}
+
+                    <div className='sm:mt-2 mt-0'>
+                        <label className="label ">
+                            <span className="label-text text-xl">Your Photo URL:</span>
+                        </label>
+                        <input type="url" name='photoURL' placeholder="Your photoURL" className="input rounded-lg input-bordered bg-gray-700 w-full text-lg" required/>
+                    </div>
+                    {/* Photo Url Input End */}
+
+                    <div className='sm:mt-2 mt-0'>
+                        <label className="label">
+                            <span className="label-text text-xl">Your Email:</span>
+                        </label>
+                        <input type="email" name='email' placeholder="Your email" className="input rounded-lg input-bordered bg-gray-700 w-full text-lg" required/>
+                    </div>
+                    {/* Email  Input End */}
+
+                    <div className='sm:mt-2 mt-0'>
+                        <label className="label ">
+                            <span className="label-text text-xl">Your Password:</span>
+                        </label>
+                        <input type="password" name='password' placeholder="Your password" className="input  input-bordered bg-gray-700 rounded-lg w-full text-lg " required/>
+                    </div>
+                    {/* Password Input End */}
+
+                    <div>
+                        <p className="text-danger mt-2 mb-0">
+                        {error.message}
+                        </p>
+                    </div>
+                    {/* Photo Url Input End */}
+
+                    {/* <div className='mt-3 flex justify-center items-center'>
+                        <input className='w-4 h-4 cursor-pointer'   onClick={handleAcceptTerms} type="checkbox" name="checkbox" value="accepted"/>
+                        <Link to='terms' className='text-lg ml-2 cursor-pointer'><label htmlFor="checkbox"> Accept Terms & Condition</label></Link>
+                    </div> */}
+
+                    <div className='sm:mt-7 mt-4 '>
+                        <button  className=" text-black py-1 w-full text-xl font-bold rounded-lg bg-[#FAB400] duration-300  hover:bg-[#c99204] flex justify-center items-center cursor-pointer">Register <SiGnuprivacyguard className=' ml-1'></SiGnuprivacyguard></button>
+                        <p className='text-center mt-2'>Already Register? <span className='text-[#c3a6f7] hover:text-[#9c6bf2] duration-200 underline font-bold '><Link to='/login'>Login</Link></span></p>
+                        <p className='text-[#c3a6f7] text-xl text-center mt-3'>--------- OR ---------</p>
+                    </div>
+                    {/* Register text End */}
+
+                </form>
+
+                <div className='mt-5 '>
+                    <button onClick = {handleGoogleSignIn} className=" text-[#9c6bf2] py-1 w-full text-lg font-semibold rounded-lg bg-[#111111] hover:bg-black  duration-300 flex justify-center items-center"><FcGoogle className='text-2xl'></FcGoogle> <span className='ml-2'>Continue with Google</span></button>
+                </div>
+                {/* Google Signup End */}
+
+                <div className='mt-2 '>
+                    <button onClick={handleGithubSignIn} className=" text-[#9c6bf2] py-1 w-full text-lg font-semibold rounded-lg bg-[#111111] hover:bg-black duration-300  flex justify-center items-center"><GrGithub className='text-2xl'></GrGithub> <span className='ml-2'>Continue with Github</span></button>
+                </div>
+                {/* Github Signup End */}
             </div>
-        </div>
     </div>
     );
 };
