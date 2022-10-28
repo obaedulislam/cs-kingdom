@@ -6,7 +6,7 @@ import { SiGnuprivacyguard } from "react-icons/si";
 import { FcGoogle } from "react-icons/fc";
 import { GrGithub} from "react-icons/gr";
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 
@@ -18,6 +18,9 @@ const Register = () => {
     const githubProvider = new GithubAuthProvider();
 
     const[error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     
     // Google Sign In Button Handler Function
     const handleGoogleSignIn = () => {
@@ -26,6 +29,7 @@ const Register = () => {
             const user = result.user;
             console.log(user);
             toast.success('Successfully SignUp With Google');
+            navigate(from, {replace: true});
         })
         .catch(error => {
             console.error(error);
@@ -39,6 +43,7 @@ const Register = () => {
             const user = result.user;
             console.log(user);
             toast.success('Successfully SignUp With Github');
+            navigate(from, {replace: true});
         })
         .catch(error => {
             console.error(error);
@@ -64,6 +69,7 @@ const Register = () => {
             handleEmailVerification();
             form.reset();
             toast.success('Successfully Sign Up! Please verify your email ');
+            navigate(from, {replace: true});
         })
         .catch(error => {
             console.error(error);
